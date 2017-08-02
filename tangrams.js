@@ -1,61 +1,134 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const canvas = document.getElementById("container");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight/2;
+document.addEventListener("DOMContentLoaded", function(){
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const stage = new Konva.Stage({
+    container: 'container',
+    width: width,
+    height: height
+  });
 
-  const stage = new createjs.Stage("container");
+  const sqrt = Math.sqrt(2);
 
-  const shapes = [];
-  const triangle1 = new createjs.Shape();
-  triangle1.graphics.beginFill("green");
-  triangle1.graphics.moveTo(100,100).lineTo(400,100).lineTo(250,250).lineTo(100,100);
-  stage.addChild(triangle1);
-  shapes.push(triangle1);
+  const layer = new Konva.Layer();
+  const startX = stage.getWidth()/2 - 50;
+  const startY = stage.getHeight()/2 - 25;
+  const shape = [];
 
-  const triangle2 = new createjs.Shape();
-  triangle2.graphics.beginFill("orange");
-  triangle2.graphics.moveTo(100,100).lineTo(100,400).lineTo(250, 250).lineTo(100,100);
-  stage.addChild(triangle2);
-  shapes.push(triangle2);
+  $('button#rabbit').on("click", function(){
+    const rabbit = new Konva.Line({
+      points: [0, 0, 0, -75 * sqrt, 75*sqrt - 90, -75 * sqrt],
+      x: 500,
+      y: 300,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false
+    });
+    layer.add(rabbit);
+    stage.add(layer);
+    rabbit.moveToBottom();
+    layer.draw();
+  });
+  const triangle1 = new Konva.Line({
+    points: [0, 0, 300, 0, 150, 150],
+    x: 100,
+    y: 100,
+    fill: '#FF9900',
+    stroke: 'black',
+    strokeWidth: 1,
+    closed: true,
+    draggable: true,
+  });
+  shape.push(triangle1);
 
-  const triangle3 = new createjs.Shape();
-  triangle3.graphics.beginFill("indigo");
-  triangle3.graphics.moveTo(250,250).lineTo(175, 325).lineTo(325, 325).lineTo(250,250);
-  stage.addChild(triangle3);
-  shapes.push(triangle3);
+  const triangle2 = new Konva.Line({
+    points: [0, 0, 0, 300, 150, 150],
+    x: 100,
+    y: 100,
+    fill: '#269B7E',
+    stroke: 'black',
+    strokeWidth: 1,
+    closed: true,
+    draggable: true
+  });
+  shape.push(triangle2);
 
-  const triangle4 = new createjs.Shape();
-  triangle4.graphics.beginFill("red");
-  triangle4.graphics.moveTo(325,175).lineTo(400,100).lineTo(400,250).lineTo(325,175);
-  stage.addChild(triangle4);
-  shapes.push(triangle4);
+  const square = new Konva.Line({
+    points: [0, 0, 75, 75, 150, 0, 75, -75],
+    x: 250,
+    y: 250,
+    fill: 'yellow',
+    stroke: 'black',
+    strokeWidth: 1,
+    closed: true,
+    draggable: true
+  });
+  shape.push(square);
 
-  const triangle5 = new createjs.Shape();
-  triangle5.graphics.beginFill("violet");
-  triangle5.graphics.moveTo(400,400).lineTo(400, 250).lineTo(250,400).lineTo(400,400);
-  stage.addChild(triangle5);
-  shapes.push(triangle5);
+  const triangle3 = new Konva.Line({
+    points: [0, 0, 75, 75, 75, -75],
+    x: 325,
+    y: 175,
+    fill: 'red',
+    stroke: 'black',
+    strokeWidth: 1,
+    closed: true,
+    draggable: true
+  });
+  shape.push(triangle3);
 
-  const square = new createjs.Shape();
-  square.graphics.beginFill("yellow");
-  square.graphics.moveTo(250,250).lineTo(325,175).lineTo(400,250).lineTo(325,325).lineTo(250,250);
-  stage.addChild(square);
-  shapes.push(square);
+  const triangle4 = new Konva.Line({
+    points: [0, 0 , 150, 0, 150, -150],
+    x: 250,
+    y: 400,
+    fill: 'violet',
+    stroke: 'black',
+    strokeWidth: 1,
+    closed: true,
+    draggable: true
+  });
+  shape.push(triangle4);
 
+  const triangle5 = new Konva.Line({
+    points: [0,0, 75, 75, -75, 75],
+    x: 250,
+    y: 250,
+    fill: 'indigo',
+    stroke: 'black',
+    strokeWidth: 1,
+    closed: true,
+    draggable: true
+  });
+  shape.push(triangle5);
 
-  const rect = new createjs.Shape();
-  rect.graphics.beginFill("blue");
-  rect.graphics.moveTo(100,400).lineTo(250,400).lineTo(325,325).lineTo(175,325).lineTo(100,400);
-  stage.addChild(rect);
-  shapes.push(rect);
-
-  rect.addEventListener("pressmove", function(event){
-    event.target.x = event.stageX;
-    event.target.y = event.stageY;
+  const rect = new Konva.Line({
+    points: [0, 0, 150, 0, 225, -75, 75, -75],
+    x: 100,
+    y: 400,
+    fill: 'blue',
+    stroke: 'black',
+    strokeWidth: 1,
+    closed: true,
+    draggable: true
   })
-  rect.addEventListener("pressup", function(event) {
-    console.log("up");
+  shape.push(rect);
+
+  shape.forEach(el => {
+    el.on("click", function(){
+      el.rotate(45);
+      layer.draw();
+    })
   })
 
-  stage.update();
-});
+
+  layer.add(triangle1);
+  layer.add(triangle2);
+  layer.add(triangle3);
+  layer.add(triangle4);
+  layer.add(triangle5);
+  layer.add(square);
+  layer.add(rect);
+  stage.add(layer);
+  layer.draw();
+})

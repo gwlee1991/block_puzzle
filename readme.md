@@ -11,7 +11,7 @@ The users will be able to:
 - [ ] Reset the game board
 - [ ] Drag pieces inside the board
 - [ ] Click on demo to see how the game works (will use modal for demo)
-- [ ] Move on to next page if puzzle solved
+- [ ] be able to choose different templates
 
 In addition, this project will include:
 
@@ -19,7 +19,7 @@ In addition, this project will include:
 
 ### Wireframes
 
-This app will consist of a game board, game controls such as 'Demo' which will pop up a modal, 'reset stage', 'next stage'(when cleared), and 'view solution', and links to my Github and LinkedIn.
+This app will consist of a game board, game controls such as 'Demo' which will pop up a modal, 'reset', templates, and 'view solution', and links to my Github and LinkedIn.
 
 ![wireframes](images/wireframe.png)
 
@@ -28,16 +28,16 @@ This app will consist of a game board, game controls such as 'Demo' which will p
 This project will be implemented with the following technologies:
 
 - Vanilla JavaScript and `jquery` for overall structure and game logic,
-- Easel.js which will help with the drag and drop logic.
+- Use Canvas to draw blocks
 
-`board.js`: this script will handle the logic for creating and updating the necessary `Easel.js` elements and rendering them to the DOM.
+`board.js`: this script will handle the logic for creating and updating the necessary `canvas` elements and rendering them to the DOM.
 
 
 ### Implementation Timeline
 
 **Day 1**: Setup project file (all configuration files). Learn Easel.js and plan out puzzles for each stage.
 
-**Day 2**: start writing `board.js`. Using `Easel.js`, be able to render blocks and grid.
+**Day 2**: start writing `board.js`. Using `canvas`, be able to render blocks and grid.
 
 **Day 3**: create the logic of the game. When the grid is filled without overlap, be able to move on to the next stage.
 
