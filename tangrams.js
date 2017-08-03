@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const stage = new Konva.Stage({
     container: 'container',
     width: width,
-    height: height
+    height: height * 0.8
   });
 
   const sqrt = Math.sqrt(2);
@@ -14,22 +14,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const startY = stage.getHeight()/2 - 25;
   const shape = [];
 
-  $('button#rabbit').on("click", function(){
-    const rabbit = new Konva.Line({
-      points: [0, 0, 0, -75 * sqrt, 75*sqrt - 90, -75 * sqrt],
-      x: 500,
-      y: 300,
-      fill: 'black',
-      stroke: 'black',
-      strokeWidth: 1,
-      closed: true,
-      draggable: false
-    });
-    layer.add(rabbit);
-    stage.add(layer);
-    rabbit.moveToBottom();
-    layer.draw();
-  });
+  
   const triangle1 = new Konva.Line({
     points: [0, 0, 300, 0, 150, 150],
     x: 100,
@@ -120,6 +105,107 @@ document.addEventListener("DOMContentLoaded", function(){
       layer.draw();
     })
   })
+
+  $('button#rabbit').on("click", function () {
+    const fills = [];
+    const fill1 = new Konva.Line({
+      points: [0, 0, 150 * sqrt, 0, 150 * sqrt, -150 * sqrt],
+      x: 500,
+      y: 450,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false,
+    });
+    fills.push(fill1);
+
+    const fill2 = new Konva.Line({
+      points: [0, 0, 150 * sqrt, 0, 0, 150 * sqrt],
+      x: 500,
+      y: 450,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false
+    });
+    fills.push(fill2);
+
+    const fill3 = new Konva.Line({
+      points: [0, 0, 75 * sqrt, 0, 75 * sqrt, -75 * sqrt, 0, -75 * sqrt],
+      x: 500 + 150 * sqrt,
+      y: 450 - 150,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false
+    });
+    fills.push(fill3);
+
+    const fill4 = new Konva.Line({
+      points: [0, 0, 75, 75, 0, 150],
+      x: 500 + 150 * sqrt,
+      y: 450 - 75 * sqrt,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false
+    });
+    fills.push(fill4);
+
+    const fill5 = new Konva.Line({
+      points: [0, 0, 150, 0, 150, -150],
+      x: 500,
+      y: 450 + 150 * sqrt,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false
+    });
+    fills.push(fill5);
+
+    const fill6 = new Konva.Line({
+      points: [0, 0, 75, -75, 0, -150],
+      x: 500 + 150,
+      y: 450 + 150 * sqrt,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false
+    });
+    fills.push(fill6);
+
+    const fill7 = new Konva.Line({
+      points: [0, 0, -75 * sqrt, 0, -150 * sqrt, -75 * sqrt, -150 * sqrt + 75 * sqrt, -75 * sqrt],
+      x: 500 + 250,
+      y: 450 - 150 - 75 * sqrt,
+      fill: 'black',
+      stroke: 'black',
+      strokeWidth: 1,
+      closed: true,
+      draggable: false
+    })
+    fills.push(fill7);
+
+
+    layer.add(fill1);
+    layer.add(fill2);
+    layer.add(fill3);
+    layer.add(fill4);
+    layer.add(fill5);
+    layer.add(fill6);
+    layer.add(fill7);
+    stage.add(layer);
+    fills.forEach(fill => {
+      fill.moveToBottom();
+    })
+    layer.draw();
+  });
 
 
   layer.add(triangle1);
