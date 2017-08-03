@@ -4,10 +4,35 @@
     <script src="https://cdn.rawgit.com/konvajs/konva/1.5.0/konva.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src='tangrams.js'></script>
+    <Link rel="stylesheet" href="style.css">
   </head>
   <body>
     <header>Welcome to Tangrams Lite</header>
     <div id="container"></div>
+    <!--demo button  -->
+    <button id='demo-button'>DEMO</button>
+    <!--demo modal  -->
+    <div id='modal' class="modal">
+      <!--modal content  -->
+      <div class='modal-content'>
+        <img />
+        <p> DRAG AND DROP TO CREATE YOUR OWN MODEL! BE CREATIVE!! </p>
+      </div>
+    </div>
+
+    <script>
+      const modal = document.getElementById('modal');
+      const button = document.getElementById('demo-button');
+      button.addEventListener("click", function(){
+        modal.style.display = "block";
+      });
+
+      window.addEventListener("click", function(){
+        if(event.target === modal){
+          modal.style.display = "none";
+        }
+      });
+    </script>
     <button id="rabbit">Rabbit</button>
   </body>
 </html>
