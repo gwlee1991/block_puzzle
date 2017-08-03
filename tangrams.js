@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
   const width = window.innerWidth;
   const height = window.innerHeight;
   const stage = new Konva.Stage({
@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function(){
   const sqrt = Math.sqrt(2);
 
   const layer = new Konva.Layer();
-  const startX = stage.getWidth()/2 - 50;
-  const startY = stage.getHeight()/2 - 25;
+  const startX = stage.getWidth() / 2 - 50;
+  const startY = stage.getHeight() / 2 - 25;
   const shape = [];
 
-  
+
   const triangle1 = new Konva.Line({
     points: [0, 0, 300, 0, 150, 150],
     x: 100,
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function(){
   shape.push(triangle3);
 
   const triangle4 = new Konva.Line({
-    points: [0, 0 , 150, 0, 150, -150],
+    points: [0, 0, 150, 0, 150, -150],
     x: 250,
     y: 400,
     fill: 'violet',
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function(){
   shape.push(triangle4);
 
   const triangle5 = new Konva.Line({
-    points: [0,0, 75, 75, -75, 75],
+    points: [0, 0, 75, 75, -75, 75],
     x: 250,
     y: 250,
     fill: 'indigo',
@@ -98,9 +98,11 @@ document.addEventListener("DOMContentLoaded", function(){
     draggable: true
   })
   shape.push(rect);
+  console.log(rect.points);
+  window.rect = rect;
 
   shape.forEach(el => {
-    el.on("click", function(){
+    el.on("click", function () {
       el.rotate(45);
       layer.draw();
     })
@@ -110,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function(){
     const fills = [];
     const fill1 = new Konva.Line({
       points: [0, 0, 150 * sqrt, 0, 150 * sqrt, -150 * sqrt],
-      x: 500,
-      y: 450,
+      x: 550,
+      y: 380,
       fill: 'black',
       stroke: 'black',
       strokeWidth: 1,
@@ -122,8 +124,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const fill2 = new Konva.Line({
       points: [0, 0, 150 * sqrt, 0, 0, 150 * sqrt],
-      x: 500,
-      y: 450,
+      x: 550,
+      y: 380,
       fill: 'black',
       stroke: 'black',
       strokeWidth: 1,
@@ -134,8 +136,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const fill3 = new Konva.Line({
       points: [0, 0, 75 * sqrt, 0, 75 * sqrt, -75 * sqrt, 0, -75 * sqrt],
-      x: 500 + 150 * sqrt,
-      y: 450 - 150,
+      x: 550 + 150 * sqrt,
+      y: 380 - 150,
       fill: 'black',
       stroke: 'black',
       strokeWidth: 1,
@@ -146,8 +148,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const fill4 = new Konva.Line({
       points: [0, 0, 75, 75, 0, 150],
-      x: 500 + 150 * sqrt,
-      y: 450 - 75 * sqrt,
+      x: 550 + 150 * sqrt,
+      y: 380 - 75 * sqrt,
       fill: 'black',
       stroke: 'black',
       strokeWidth: 1,
@@ -158,8 +160,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const fill5 = new Konva.Line({
       points: [0, 0, 150, 0, 150, -150],
-      x: 500,
-      y: 450 + 150 * sqrt,
+      x: 550,
+      y: 380 + 150 * sqrt,
       fill: 'black',
       stroke: 'black',
       strokeWidth: 1,
@@ -170,8 +172,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const fill6 = new Konva.Line({
       points: [0, 0, 75, -75, 0, -150],
-      x: 500 + 150,
-      y: 450 + 150 * sqrt,
+      x: 550 + 150,
+      y: 380 + 150 * sqrt,
       fill: 'black',
       stroke: 'black',
       strokeWidth: 1,
@@ -182,8 +184,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const fill7 = new Konva.Line({
       points: [0, 0, -75 * sqrt, 0, -150 * sqrt, -75 * sqrt, -150 * sqrt + 75 * sqrt, -75 * sqrt],
-      x: 500 + 250,
-      y: 450 - 150 - 75 * sqrt,
+      x: 550 + 250,
+      y: 380 - 150 - 75 * sqrt,
       fill: 'black',
       stroke: 'black',
       strokeWidth: 1,
@@ -207,7 +209,6 @@ document.addEventListener("DOMContentLoaded", function(){
     layer.draw();
   });
 
-
   layer.add(triangle1);
   layer.add(triangle2);
   layer.add(triangle3);
@@ -217,4 +218,10 @@ document.addEventListener("DOMContentLoaded", function(){
   layer.add(rect);
   stage.add(layer);
   layer.draw();
+
+
+  const reset = document.getElementById('reset');
+  reset.addEventListener("click", function () {
+    window.location.reload(true);
+  })
 })
