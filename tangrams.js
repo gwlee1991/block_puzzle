@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const height = window.innerHeight;
   const stage = new Konva.Stage({
     container: 'container',
-    width: width,
+    width: width * 0.8,
     height: height * 0.8
   });
 
