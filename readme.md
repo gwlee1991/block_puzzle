@@ -16,6 +16,14 @@ Tangrams Lite is a simple puzzle where the user is able to drag and drop puzzle 
 
 ### Easy to use interface
 By using gif for a demo, it is clear for the users as to what they are supposed to do. Also, by using a modal, there's no need for users to navigate to a different page or read long texts.
+The reset button allows users to move the blocks to the originial position without having to do it manually or refresh the page.
+
+### Easy to follow templates
+
+Templates have been provided to users so that they can easily follow and learn about the user interface. It will be rendered when clicked on the `rabbit` button at the bottom.
+
+![rabbit template](http://res.cloudinary.com/dbtdkqyeo/image/upload/v1501872174/Screen_Shot_2017-08-04_at_11.42.38_fdzfpw.png)
+
 
 ## Technology
 
