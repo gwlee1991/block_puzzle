@@ -10,12 +10,17 @@ img {
 }
 
 body {
-  background: saddlebrown;
+  background: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
+}
+
+.content-body{
+  display: flex;
+  flex-direction: row;
 }
 
 #container {
@@ -72,4 +77,9 @@ button {
 
 a {
   text-decoration: none;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
 }
