@@ -1,5 +1,6 @@
 # Tangrams_lite
 
+Link - [Tangrams-lite](https://gwlee1991.github.io/Tangrams_lite/)
 Tangrams Lite is a simple puzzle where the user is able to drag and drop puzzle pieces to create new models. A template has been provided as an example to give users insight as to what they are capable of.
 
 ## Features
